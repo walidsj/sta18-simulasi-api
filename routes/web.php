@@ -39,5 +39,7 @@ $router->group(
         $router->get('/trials/{trial_id}', ['uses' => 'TrialController@show']);
 
         $router->get('/major-agencies/{major_id}/{user_type_id}', ['uses' => 'MajorAgencyController@show']);
+
+        $router->post('/user-agencies/{trial_id}/{trial_option_id}', ['uses' => 'UserAgencyController@store']);
     }
 );
