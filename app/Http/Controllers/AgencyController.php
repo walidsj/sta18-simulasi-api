@@ -12,7 +12,7 @@ class AgencyController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Agencies found.',
-            'data' => Agency::orderBy('name')->get()
+            'data' => Agency::where('user_type_id', 3)->orderBy('name')->get()
         ]);
     }
 
