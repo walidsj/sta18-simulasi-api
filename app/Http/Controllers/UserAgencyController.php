@@ -18,7 +18,7 @@ class UserAgencyController extends Controller
                 ->join('trial_options', 'user_agencies.trial_option_id', '=', 'trial_options.id')
                 ->join('agencies', 'user_agencies.agency_id', '=', 'agencies.id')
                 ->select(['user_agencies.*', 'trial_options.title', 'agencies.name'])
-                ->orderBy('name')
+                ->orderBy('title')
                 ->get()
         ]);
     }
