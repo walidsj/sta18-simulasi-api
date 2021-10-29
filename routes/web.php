@@ -37,5 +37,7 @@ $router->group(
 
         $router->get('/trials', ['uses' => 'TrialController@index']);
         $router->get('/trials/{trial_id}', ['uses' => 'TrialController@show']);
+
+        $router->get('/major-agencies/{major_id}/{user_type_id}', ['uses' => 'MajorAgencyController@show']);
     }
 );

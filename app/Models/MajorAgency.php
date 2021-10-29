@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Trial extends Model
+class MajorAgency extends Model
 {
     use HasFactory;
 
@@ -25,9 +25,4 @@ class Trial extends Model
         'created_at',
         'updated_at'
     ];
-
-    public function trial_options()
-    {
-        return $this->hasMany(TrialOption::class);
-    }
 }
