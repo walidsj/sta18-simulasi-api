@@ -36,5 +36,6 @@ $router->group(
         $router->get('/user-types', ['uses' => 'UserTypeController@index']);
 
         $router->get('/trials', ['uses' => 'TrialController@index']);
+        $router->get('/trials/{trial_id}', ['uses' => 'TrialController@show']);
     }
 );

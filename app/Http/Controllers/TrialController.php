@@ -12,8 +12,17 @@ class TrialController extends Controller
     {
         return response()->json([
             'success' => true,
-            'message' => 'Trial found.',
+            'message' => 'Trials found.',
             'data' => Trial::all()
+        ]);
+    }
+
+    public function show($trial_id)
+    {
+        return response()->json([
+            'success' => true,
+            'message' => 'Trial found.',
+            'data' => Trial::findOrFail($trial_id)
         ]);
     }
 }
