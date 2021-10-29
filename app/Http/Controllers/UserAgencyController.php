@@ -26,9 +26,19 @@ class UserAgencyController extends Controller
             'agency_id' => 'required|numeric'
         ]);
 
+        if (
+            UserAgency::where('user_id', $request->auth->id)
+            ->where('trial_id', $trial_id)
+            ->where('agency_id', $request->agency_id)
+            ->get()->count() > 0
+        ) return response()->json([
+            'success' => false,
+            'message' => 'Tidak boleh memilih instansi yg sama di pilihan berbeda.',
+        ], 422);
+
         $user_agency = UserAgency::where('user_id', $request->auth->id)
             ->where('trial_id', $trial_id)
-            // ->where('trial_option_id', $trial_option_id)
+            ->where('trial_option_id', $trial_option_id)
             ->first();
 
         if (empty($user_agency)) {
@@ -38,11 +48,6 @@ class UserAgencyController extends Controller
             $user_agency->trial_id = $trial_id;
             $user_agency->trial_option_id = $trial_option_id;
             $user_agency->save();
-        } elseif ($user_agency->trial_option_id == $trial_option_id) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Tidak boleh memilih instansi yg sama di pilihan berbeda.',
-            ], 422);
         } else {
             $user_agency->user_id = $request->auth->id;
             $user_agency->agency_id = $request->agency_id;
