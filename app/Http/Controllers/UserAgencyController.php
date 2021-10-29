@@ -8,15 +8,18 @@ use Illuminate\Http\Request;
 class UserAgencyController extends Controller
 {
 
-    public function show(Request $request, $trial_id, $trial_option_id)
+    public function show(Request $request, $trial_id)
     {
         return response()->json([
             'success' => true,
             'message' => 'User agency succesfully added.',
-            'data' => UserAgency::where('user_id', $request->auth->id)
-                ->where('trial_id', $trial_id)
-                ->where('trial_option_id', $trial_option_id)
-                ->all()
+            'data' => UserAgency::where('user_agencies.user_id', $request->auth->id)
+                ->where('user_agencies.trial_id', $trial_id)
+                ->join('trial_options', 'user_agencies.trial_option_id', '=', 'trial_options.id')
+                ->join('agencies', 'user_agencies.agency_id', '=', 'agencies.id')
+                ->select(['user_agencies.*', 'trial_options.title', 'agencies.name'])
+                ->orderBy('name')
+                ->get()
         ]);
     }
 
