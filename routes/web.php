@@ -34,5 +34,7 @@ $router->group(
         $router->get('/agencies/{agency_id}', ['uses' => 'AgencyController@show']);
 
         $router->get('/user-types', ['uses' => 'UserTypeController@index']);
+
+        $router->get('/trials', ['uses' => 'TrialController@index']);
     }
 );
