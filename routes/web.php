@@ -29,5 +29,8 @@ $router->group(
 
         $router->get('/me', ['uses' => 'AuthController@show']);
         $router->get('/my-score', ['uses' => 'AuthController@score']);
+
+        $router->get('/agencies', ['uses' => 'AgencyController@index']);
+        $router->get('/user-types', ['uses' => 'UserTypeController@index']);
     }
 );
