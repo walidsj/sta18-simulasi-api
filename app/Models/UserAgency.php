@@ -31,4 +31,9 @@ class UserAgency extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function trial_option()
+    {
+        return $this->belongsTo(TrialOption::class);
+    }
 }

@@ -40,7 +40,9 @@ $router->group(
 
         $router->get('/major-agencies/{major_id}/{user_type_id}', ['uses' => 'MajorAgencyController@show']);
 
-        $router->post('/user-agencies/{trial_id}/{trial_option_id}', ['uses' => 'UserAgencyController@store']);
-        $router->get('/user-agencies/{trial_id}', ['uses' => 'UserAgencyController@show']);
+        $router->post('/user-agency/{trial_id}/{trial_option_id}', ['uses' => 'UserAgencyController@store']);
+        $router->get('/user-agency/{trial_id}', ['uses' => 'UserAgencyController@show']);
+
+        $router->get('/user-agencies/{trial_id}', ['uses' => 'UserAgenciesController@show']);
     }
 );
